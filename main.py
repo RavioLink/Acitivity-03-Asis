@@ -4,10 +4,10 @@ import asis_script_1_stat as statcalc
 import asis_script_2_EV as evcalc
 
 while True:
-    age = 1
+    
     CalcChoice = input("Stat or EV Calculation?(Type Stat or EV): ")
     if CalcChoice == "Stat":
-        age = 5
+        
         Level = int(input("Pokemon Level: "))
         BasePkmn = int(input("Base HP stat: "))
         NaturePkmn = input("Nature of your Pokemon: ")
@@ -65,7 +65,7 @@ while True:
                 resultEVDef = int(evcalc.EVCalc.evCalcDef(desIncStat,evNature,evLevel,evBase,evIVDef,evEVDef))
                 print(round(resultEVDef))
             elif usrStatChoice == "Special Attack":
-                desIncStat = int(input("Desired increase in Def Stat: "))
+                desIncStat = int(input("Desired increase in Special Attack Stat: "))
                 evNature = input("Pokemon nature: ")
                 evLevel = int(input("Level of Pokemon: "))
                 evBase = int(input("Base stats value: "))
@@ -76,7 +76,7 @@ while True:
                 print(round(resultEvSpecAtk))
                 
             elif usrStatChoice == "Special Defense":
-                desIncStat = int(input("Desired increase in Def Stat: "))
+                desIncStat = int(input("Desired increase in Special Defense Stat: "))
                 evNature = input("Pokemon nature: ")
                 evLevel = int(input("Level of Pokemon: "))
                 evBase = int(input("Base stats value: "))
@@ -86,7 +86,7 @@ while True:
                 resultEVSpecDef = int(evcalc.EVCalc.evCalcSpecDef(desIncStat,evNature,evLevel,evBase,evIVSpecDef,evEVSpecDef))
                 print(round(resultEVSpecDef))
             elif usrStatChoice == "Speed":
-                desIncStat = int(input("Desired increase in Def Stat: "))
+                desIncStat = int(input("Desired increase in Speed Stat: "))
                 evNature = input("Pokemon nature: ")
                 evLevel = int(input("Level of Pokemon: "))
                 evBase = int(input("Base stats value: "))
@@ -96,11 +96,34 @@ while True:
                 resultEVSpd = int(evcalc.EVCalc.evCalcSpd(desIncStat,evNature,evLevel,evBase,evIVSpd,evEVSpd))
                 print(round(resultEVSpd))
             else:
-                print("Selection not recognized will start from the beginning: ")
+                print("Selection not recognized will start from the beginning")
                 continue
         elif evChoice == "All":
-            pass
-        age = 0
+            desIncStat = int(input("Desired increase in Stat: "))
+            evNature = input("Pokemon nature: ")
+            evLevel = int(input("Level of Pokemon: "))
+            evBase = int(input("Base stats value: "))
+            evIVAtk = int(input("IV for this stat(0-31): "))
+            evEVAtk = int(input("EV for this stat(0-255): "))
+            evIVDef = int(input("IV for this stat(0-31): "))
+            evEVDef = int(input("EV for this stat(0-255): "))
+            evIVSpecAtk = int(input("IV for this stat(0-31): "))
+            evEVSpecAtk = int(input("EV for this stat(0-255): "))
+            evIVSpecDef = int(input("IV for this stat(0-31): "))
+            evEVSpecDef = int(input("EV for this stat(0-255): "))
+            evIVSpd = int(input("IV for this stat(0-31): "))
+            evEVSpd = int(input("EV for this stat(0-255): "))
+            
+            sumAllEV = evEVAtk + evEVDef + evEVSpecAtk + evEVSpecDef + evEVSpd
+            if sumAllEV > 510:
+                sumAllEV = 500
+            sumAllIV = evIVAtk + evIVDef + evIVSpecAtk + evIVSpecDef + evIVSpd
+            
+            resultAllEVStatCalc = int(evcalc.EVCalc.allEVCalc(desIncStat,evNature,evLevel,evBase,sumAllEV,sumAllIV))
+            print(round(resultAllEVStatCalc))
+            
+             
+    
     else:
         print("Cannot recognize input! Will ask you again.")
         continue

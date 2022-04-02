@@ -49,4 +49,7 @@ class EVCalc():
         else:
             evnatureFlag = 1
         return (((((desIncStat/evnatureFlag)-(intD)*400)/evLevel)/4)*4)
-    
+    def allEVCalc(desIncStat,evNature,evLevel,evBase,sumAllEV,sumAllIV):
+        intD = ((2*evBase+sumAllIV+(sumAllEV/4))*(evLevel/100))
+        evnatureFlag = 1
+        return (((((desIncStat/evnatureFlag)-(intD)*400)/evLevel)/4)*4)
